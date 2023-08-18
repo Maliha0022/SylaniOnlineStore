@@ -17,7 +17,7 @@ body {
     float: left;
     color: black;
     text-align: center;
-    padding: 12px;
+    padding: 11px;
     text-decoration: none;
     font-size: 18px;
     line-height: 25px;
@@ -25,21 +25,19 @@ body {
 
 .header a.logo {
     font-size: 25px;
-    font-weight: bold;
+    font-weight: 600;
     text-transform: uppercase;
     color: #61B846;
-    font-family: Inter;
 }
 
 #uniqe{
     text-transform: uppercase;
     color: #024F9D;
-    font-family: Inter;
     font-size: 20px;
     font-style: normal;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 25px;
-    padding-left: 32px;
+    padding-left: 28px;
     margin: 0px;
     
 }
