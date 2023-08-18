@@ -1,0 +1,31 @@
+.catlist#li-1 {
+    background: url('/images/image\ 16.png') no-repeat right center;
+    padding: 5px 5px 5px 15px;
+    list-style: none;
+    margin: 0;
+    vertical-align: middle;
+}
+
+.catlist#li-2 {
+    background: url('/images/image\ 13.png') no-repeat right center;
+    padding: 5px 5px 5px 15px;
+    list-style: none;
+    margin: 0;
+    vertical-align: middle;
+}
+
+.catlist#li-3 {
+    background: url('/images/image\ 15.png') no-repeat right center;
+    padding: 5px 5px 5px 15px;
+    list-style: none;
+    margin: 0;
+    vertical-align: middle;
+}
+
+#allcategories{
+    font-family: Arial, sans-serif;
+    font-size: large;
+    font-weight: bold;
+    color: #024F9D;
+
+}
