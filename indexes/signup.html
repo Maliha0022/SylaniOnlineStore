@@ -42,6 +42,7 @@
         </div>
     </div>
 
+    <!-- <script type="module" src="../JavaScript/firebase.js"></script>     -->
 </body>
 
 </html>
@@ -71,7 +72,6 @@
 
     document.addEventListener("DOMContentLoaded", function () {
         // Your code here, including event listener setup
-
         const signUpBtn = document.getElementById('signUpBtn');
         signUpBtn.addEventListener('click', (e) => {
             const username = document.getElementById("username").value;
@@ -94,6 +94,7 @@
                     })
                         .then(() => {
                             // Data saved successfully!
+                            window.location.href = 'Admin.html'
                             alert('you are signed up');
                             console.log(userCredential);
                         })
