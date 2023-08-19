@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../styles/signinstyle.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Sign In</title>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <div class="form-box login">
+            <h1>SAYLANI WELFARE</h1>
+            <h3>ONLINE DISCOUNT STORE</h3>
+            <form action="#">
+                <div class="input-box">
+                    <input type="text" placeholder="Email" id="email">
+                    <i class='bx bxs-user'></i>
+                </div>
+                <div class="input-box">
+                    <input type="password" placeholder="Password" id="password">
+                    <i class='bx bxs-lock-alt'></i>
+                </div>
+                <div class="logreg-link">
+                </div>
+                    <button class="btn" id="signInBtn" name="signIn" type="button">Sign in</button>
+                <div class="logreg-link">
+                    <p>Dont't have an account? <a href="../indexes/signup.html" class="register-link">Sign Up</a></p>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.2.0/firebase-auth.js';
+    import { getDatabase, ref, set, update } from 'https://www.gstatic.com/firebasejs/10.2.0/firebase-database.js';
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyDXc1hesqQkd304iS0d85EJf2f0dSBwRiQ",
+        authDomain: "sylani-online-store.firebaseapp.com",
+        databaseURL: "https://sylani-online-store-default-rtdb.firebaseio.com",
+        projectId: "sylani-online-store",
+        storageBucket: "sylani-online-store.appspot.com",
+        messagingSenderId: "563191373992",
+        appId: "1:563191373992:web:b41f0cee333689fac1229d",
+        measurementId: "G-QY9V2G87N8"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const database = getDatabase(app);
+
+    //sign in functionality
+
+    document.addEventListener("DOMContentLoaded", function () {
+        // Your code here, including event listener setup
+
+        const signInBtn = document.getElementById('signInBtn');
+        signInBtn.addEventListener('click', (e) => {
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            // FIREBASE CODE
+            signInWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    // Signed in
+                    // document.write("You are Signed in");
+                    const user = userCredential.user;
+                    //use uid
+                    update(ref(database, 'users/' + user.uid), {
+                        email: email,
+                        password: password,
+                        lastLogin: Date.now()
+                    })
+                        .then(() => {
+                            // Data updated successfully!
+                            alert('you are signed in');
+                            console.log(userCredential);
+                        })
+                        .catch((error) => {
+                            // The write failed...
+                            alert(error)
+                        });
+
+                })
+                .catch((error) => {
+                    console.log(error.code);
+                    console.log(error.message);
+                });
+
+        });
+    });
+</script>

@@ -1,0 +1,50 @@
+
+.img{
+    display: flex;
+    width: 342px;
+    height: 268px;
+    padding-top:10%;
+    padding-left: 35%;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+.text h1{
+    color: #61B846;
+    font-size: 38px;
+    font-style: normal;
+    font-family: Arial, sans-serif;
+    font-weight: 700;
+    line-height: 25px; /* 65.789% */
+    padding-left: 35%;
+}
+.text h3{
+    color: #024F9D;
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 25px; /* 125% */
+    padding-left: 38%;
+}
+.input-field button{
+    margin-top: 35px;
+}
+.btn {
+    position: relative;
+    font-family: Arial, sans-serif;
+    width: 400px;
+    height: 50px;
+    outline: none;
+    border: 2px solid;
+    cursor: pointer;
+    font-size: 16px;
+    color: white;
+    font-weight: 600;
+    border-radius: 15px;
+    background: #61B846;
+    margin-left: 500px;
+}
+.btn:hover{
+        background-color: #349915;
+}
