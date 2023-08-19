@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AddItem</title>
+  <title>Admin Account</title>
   <link rel="stylesheet" type="text/css" href="../styles/adminstyle.css">
   <link rel="stylesheet" type="text/css" href="../styles/adminaccountstyle.css">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -48,7 +48,7 @@
         <!-- <a class="mr-5 hover:text-white" href="#"><img style="height: 30px;"
             src="../images/list_alt_FILL0_wght400_GRAD0_opsz48 1.png"></a> -->
       </nav>
-<!-- yahan py ek function bny ga jis sy whindow shitwh ho kr home k page py jaye gi -->
+      <!-- yahan py ek function bny ga jis sy whindow shitwh ho kr home k page py jaye gi -->
       <button
         class="inline-flex items-center bg-gray-200 border-0 py-1 px-3 focus:outline-none hover:bg-gray-100 rounded text-black md:mt-0">Back
         <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -111,20 +111,20 @@
           <!-- <div class="input-group mb-4">
             <textarea class="form-control" aria-label="With textarea" placeholder="Description"></textarea>
           </div> -->
-        
-          
+
+
           <div class="mb-3">
             <label for="formFile" class="form-label">Choose a Picture from Computer</label>
             <input class="form-control" type="file" id="formFile">
           </div>
-          <button
+          <button id="logOut" name="logout" type="submit"
             class="text-white bg-green-600 border-0 py-2 px-8 focus:outline-none hover:bg-green-800 rounded text-lg">Logout</button>
         </div>
       </div>
     </div>
   </section>
 
-  
+
 
 
   <br>
@@ -177,3 +177,49 @@
 </body>
 
 </html>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-app.js";
+  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'https://www.gstatic.com/firebasejs/10.2.0/firebase-auth.js';
+  import { getDatabase, ref, set, update } from 'https://www.gstatic.com/firebasejs/10.2.0/firebase-database.js';
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDXc1hesqQkd304iS0d85EJf2f0dSBwRiQ",
+    authDomain: "sylani-online-store.firebaseapp.com",
+    databaseURL: "https://sylani-online-store-default-rtdb.firebaseio.com",
+    projectId: "sylani-online-store",
+    storageBucket: "sylani-online-store.appspot.com",
+    messagingSenderId: "563191373992",
+    appId: "1:563191373992:web:b41f0cee333689fac1229d",
+    measurementId: "G-QY9V2G87N8"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const database = getDatabase(app);
+
+  //sign in functionality
+
+  document.addEventListener("DOMContentLoaded", function () {
+    // Your code here, including event listener setup
+
+    const logOut = document.getElementById('logOut');
+    logOut.addEventListener('click', () => {
+
+      // FIREBASE CODE
+      signOut(auth)
+        .then(() => {
+          // Sign-out successful.
+          window.location.href = '../indexHome.html'
+          alert('Signed out Successfully');
+          console.log("signed out")
+        }).catch((error) => {
+          // An error happened.
+          console.log(error.code);
+          console.log(error.message);
+        });
+
+    });
+  });
+</script>
